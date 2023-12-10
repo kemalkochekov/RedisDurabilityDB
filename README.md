@@ -1,20 +1,48 @@
+# RedisDurabilityDB
 
+This project aims to provide a custom implementation of a caching layer (Cache) and a storage layer (DB) inspired by PostgreSQL and Redis. The implementation is written in the pkg package and follows the datasource.Datasource interface.
 
-Так как мы теперь знаем как устроены PostgreSQL и Redis, мы постараемся реализовать часть их функционала самостоятельно
+## Table of Contents
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Задание
+## Features
 
-Требования:
-1) Написать реализацию кэширующего слоя (Cache) и хранилища (DB) в пакете `pkg`
-2) Реализации должны вызываться в соответствующих datasouce (`cache`, `database`), которые в свою очередь, **должны** реализовать интерфейс `datasource.Datasouce`
-3) Реализация транзакций **должна** использовать механизмы блокировок
-4) Данные в datasouce database должны создаваться в транзакции
-5) **Нельзя** допускать чтение устаревших данные (Stale Data) на слое кэширования
+- GET: Retrieve data from the database based on the provided key.
+- INSERT: Add new data to the database.
 
-## Дополнительно
-💎 Побороть проблему гонки данных (Race Conditions)
+## Prerequisites
 
-## Запуск приложения
-```shell
-go run ./...
-```
+Before running this application, ensure that you have the following prerequisites installed:
+
+- Go: [Install Go](https://go.dev/doc/install/)
+
+## Installation
+
+1. Clone the repository:
+  ```bash
+    https://github.com/kemalkochekov/RedisDurabilityDB.git
+  ```
+
+2. Navigate to the project directory:
+  ```bash
+    cd RedisDurabilityDB
+  ```
+
+## Usage
+1. Run the main.go file:
+  ```bash
+    go run cmd/main.go
+  ```
+
+## Contributing
+
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
