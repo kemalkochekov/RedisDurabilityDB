@@ -1,10 +1,11 @@
 package database
 
 import (
-	"RedisDurabilityDB/pkg"
 	"context"
 	"fmt"
 	"time"
+
+	"RedisDurabilityDB/pkg"
 )
 
 type ClientDatabase struct {
@@ -14,25 +15,33 @@ type ClientDatabase struct {
 func NewClientDatabase(db pkg.DBops) *ClientDatabase {
 	return &ClientDatabase{db: db}
 }
-func (c *ClientDatabase) Set(ctx context.Context, key string, value any, expiration time.Duration) error {
 
+func (c *ClientDatabase) Set(ctx context.Context, key string, value any, _ time.Duration) error {
 	// Begin a transaction
 	err := c.db.Begin(ctx)
 	if err != nil {
 		return err
 	}
 
-	defer c.db.Rollback(ctx) // This is safe to call even if the transaction is already committed.
-
 	c.db.Set(key, value)
 
-	return c.db.Commit(ctx, key)
+	err = c.db.Commit(ctx, key)
+	if err != nil {
+		if txErr := c.db.Rollback(ctx); txErr != nil {
+			return txErr
+		}
+
+		return err
+	}
+
+	return nil
 }
 
-func (c *ClientDatabase) Get(ctx context.Context, key string) (any, error) {
+func (c *ClientDatabase) Get(_ context.Context, key string) (any, error) {
 	value, err := c.db.Get(key)
 	if err != nil {
 		return nil, fmt.Errorf("no product found with id: %s", key)
 	}
+
 	return value, nil
 }
