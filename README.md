@@ -1,6 +1,6 @@
 # RedisDurabilityDB
 
-This project aims to provide a custom implementation of a caching layer (Cache) and a storage layer (DB) inspired by PostgreSQL and Redis. The implementation is written in the pkg package and follows the datasource.Datasource interface.
+This project aims to provide a custom implementation of a caching layer and a storage layer inspired by PostgreSQL and Redis. The implementation is written in the `pkg` package and follows the `datasource.Datasource` interface.
 
 ## Table of Contents
 - [Features](#features)
