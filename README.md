@@ -7,6 +7,9 @@ This project aims to provide a custom implementation of a caching layer and a st
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Linting and Code Quality](#linting-and-code-quality)
+  - [Linting Installation](#linting-installation)
+  - [Linting Usage](#linting-usage)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -38,6 +41,27 @@ Before running this application, ensure that you have the following prerequisite
   ```bash
     go run cmd/main.go
   ```
+
+## Linting and Code Quality
+
+This project maintains code quality using `golangci-lint`, a fast and customizable Go linter. `golangci-lint` checks for various issues, ensures code consistency, and enforces best practices, helping maintain a clean and standardized codebase.
+
+### Linting Installation
+
+To install `golangci-lint`, you can use `go get`:
+
+```bash
+  go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
+```
+
+### Linting Usage
+
+Once installed, you can run golangci-lint on your project by executing the following command at the root directory of your project:
+
+```bash
+  golangci-lint run
+```
+This command performs linting checks on your entire project and provides a detailed report highlighting any issues or violations found.
 
 ## Contributing
 
