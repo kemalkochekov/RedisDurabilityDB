@@ -28,7 +28,7 @@ Before running this application, ensure that you have the following prerequisite
 
 1. Clone the repository:
   ```bash
-    https://github.com/kemalkochekov/RedisDurabilityDB.git
+    git clone https://github.com/kemalkochekov/RedisDurabilityDB.git
   ```
 
 2. Navigate to the project directory:
